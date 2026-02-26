@@ -1,0 +1,56 @@
+.DS_Store
+Thumbs.db
+
+# Colcon / ament / ROS2 build artifacts
+build/
+install/
+log/
+
+# Ignore nested package build outputs
+**/build/
+**/install/
+**/log/
+
+# CMake artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+CTestConfiguration.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+pip-wheel-metadata/
+*.egg
+dist/
+build/**
+.venv/
+venv/
+env/
+ENV/
+venv.bak/
+*.pytest_cache/
+.pytest_cache/
+.mypy_cache/
+.cache/
+.coverage
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Backup and swap
+*~
+*.swp
+
+# Misc
+.ropeproject/
+tags
+coverage.xml
+coverage-html/
+__pycache__/
