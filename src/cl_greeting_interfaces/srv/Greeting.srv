@@ -1,0 +1,5 @@
+# name of the client
+string name
+---
+# greeting message
+string message
