@@ -1,0 +1,6 @@
+geometry_msgs/Point target_position
+float32 target_speed
+---
+bool success
+---
+geometry_msgs/Point current_position

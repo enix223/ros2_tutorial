@@ -30,6 +30,12 @@
 
 ## FAQ
 
+* Create a new package
+
+    ```shell
+    ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_pubsub
+    ```
+
 * If you are using pyenv in your shell, please make sure `pyenv` is removed from your path when first run `colcon build`
 
     ```shell
