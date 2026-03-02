@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cl_action)
+project(cl_robot_interfaces)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,9 +7,10 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(rclcpp_action REQUIRED)
-find_package(cl_robot_interfaces REQUIRED)
+find_package(action_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -23,24 +24,16 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-# Create server executable
-add_executable(server src/server.cpp src/main_server.cpp)
-ament_target_dependencies(server rclcpp rclcpp_action cl_robot_interfaces)
-target_include_directories(server PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
+# compile interface
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "action/RobotMove.action"
+  DEPENDENCIES 
+  action_msgs
+  geometry_msgs
+  builtin_interfaces
 )
 
-# Create client executable
-add_executable(client src/client.cpp src/main_client.cpp)
-ament_target_dependencies(client rclcpp rclcpp_action cl_robot_interfaces)
-target_include_directories(client PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-# Install executables
-install(TARGETS
-  server
-  client
-  DESTINATION lib/${PROJECT_NAME})
+# export deps
+ament_export_dependencies(rosidl_default_runtime)
 
 ament_package()
