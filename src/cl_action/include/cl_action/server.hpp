@@ -1,18 +1,12 @@
 #pragma once
 
 #include <rclcpp/rclcpp.hpp>
-#include <rclcpp_action/rclcpp_action.hpp>
 
 #include "cl_action/common.hpp"
-#include "cl_robot_interfaces/action/robot_move.hpp"
 
 namespace cl {
 class RobotMoveActionServer : public rclcpp::Node {
  public:
-  using RobotMove = cl_robot_interfaces::action::RobotMove;
-  using ServerGoalHandleRobotMove =
-      rclcpp_action::ServerGoalHandle<cl_robot_interfaces::action::RobotMove>;
-
   RobotMoveActionServer();
 
  private:

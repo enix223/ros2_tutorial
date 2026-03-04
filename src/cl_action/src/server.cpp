@@ -9,6 +9,7 @@ cl::RobotMoveActionServer::RobotMoveActionServer() : Node("robot_move_server") {
                 std::placeholders::_1),
       std::bind(&RobotMoveActionServer::handle_accepted, this,
                 std::placeholders::_1));
+  RCLCPP_INFO(get_logger(), "server started");
 }
 
 rclcpp_action::GoalResponse cl::RobotMoveActionServer::handle_goal(
